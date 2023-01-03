@@ -1,0 +1,41 @@
+/**
+ * Burada json object - document mantığıyla bazı parameterleri tanımlayıp
+ * dışarı export ediyoruz.
+ */
+ext {
+    /**
+     * Bu parametreler libs içinde bağımlılılların versiyonlarını tanımlar.
+     */
+    versions = [
+            springBoot          : "2.7.7",
+            lombok              : "1.18.24",
+            postgreSQL          : "42.5.1",
+            swagger             : "1.6.14",
+            mapstruct           : "1.5.3.Final",
+    ]
+
+    /**
+     * BAğımlılık listesinde tanımlama yaparken sıralama şu şekilde olmalıdır.
+     * 1. Bağımlılığın Adı
+     * 2. : (iki nokta)
+     * 3. Group Id (com.muhammet - projenin group idsi)
+     * 4. : (iki nokta)
+     * 5. Artifact Id (test - projenin artifact idsi yani proje adı)
+     * 6. : (iki nokta)
+     * 7. Versiyon (v.0.0.1 - projenin versiyonu) bu version yukarıda versions tan alınacaktır.
+     */
+    libs = [
+
+         springBootDataJpa      : "org.springframework.boot:spring-boot-starter-data-jpa:${versions.springBoot}",
+         springBootWeb          : "org.springframework.boot:spring-boot-starter-web:${versions.springBoot}",
+         springBootValidation   : "org.springframework.boot:spring-boot-starter-validation:${versions.springBoot}",
+         springBootDevTools     : "org.springframework.boot:spring-boot-devtools:${versions.springBoot}",
+         lombok                 : "org.projectlombok:lombok:${versions.lombok}",
+         postgreSQL             : "org.postgresql:postgresql:${versions.postgreSQL}",
+         swaggerui              : "org.springdoc:springdoc-openapi-ui:${versions.swagger}",
+         mapstruct              : "org.mapstruct:mapstruct:${versions.mapstruct}",
+         mapstructProcessor     : "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
+
+
+    ]
+}
