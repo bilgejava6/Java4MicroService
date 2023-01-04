@@ -10,6 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/auth-microservice" />
+            <option value="$PROJECT_DIR$/product-microservice" />
+            <option value="$PROJECT_DIR$/sales-microservice" />
+            <option value="$PROJECT_DIR$/userprofile-microservice" />
           </set>
         </option>
       </GradleProjectSettings>
