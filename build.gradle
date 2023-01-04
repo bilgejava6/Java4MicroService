@@ -39,6 +39,7 @@ allprojects{
         implementation libs.springBootValidation
         implementation libs.mapstruct
         annotationProcessor libs.mapstructProcessor
+        implementation libs.springCloudOpenFeign
     }
 }
 configurations {

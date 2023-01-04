@@ -8,6 +8,7 @@ ext {
      */
     versions = [
             springBoot          : "2.7.7",
+            springCloud         : "3.1.5",
             lombok              : "1.18.24",
             postgreSQL          : "42.5.1",
             swagger             : "1.6.14",
@@ -30,12 +31,12 @@ ext {
          springBootWeb          : "org.springframework.boot:spring-boot-starter-web:${versions.springBoot}",
          springBootValidation   : "org.springframework.boot:spring-boot-starter-validation:${versions.springBoot}",
          springBootDevTools     : "org.springframework.boot:spring-boot-devtools:${versions.springBoot}",
+         springCloudOpenFeign   : "org.springframework.cloud:spring-cloud-starter-openfeign:${versions.springCloud}",
          lombok                 : "org.projectlombok:lombok:${versions.lombok}",
          postgreSQL             : "org.postgresql:postgresql:${versions.postgreSQL}",
          swaggerui              : "org.springdoc:springdoc-openapi-ui:${versions.swagger}",
          mapstruct              : "org.mapstruct:mapstruct:${versions.mapstruct}",
          mapstructProcessor     : "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
-
 
     ]
 }

@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -70,5 +71,18 @@ public class ServiceManager<T extends BaseEntity, ID> implements IService<T,ID> 
     @Override
     public Optional<T> findById(ID id) {
         return repository.findById(id);
+    }
+
+    public List<T> findAllActive(){
+        /**
+         * Eğer veritananında hiç kayıt yok ise ya da, genellikle bigData, MongoDB gibi vt lerde
+         * mevcut olmayan alanlarda (Referaences DataType larda) filtreleme yapıldığında NullPointException fırlatır. bunu önüne
+         * geçmek için en genel tanımı ile ilgili kaydın null olup olmadığına bakılır.
+         */
+        return repository.findAll().stream()
+                //.filter(x-> x.isIsactive()!=null)
+                .filter(
+                x-> x.isIsactive()
+        ).collect(Collectors.toList());
     }
 }
