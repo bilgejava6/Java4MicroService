@@ -21,9 +21,10 @@ public class GlobalExceptionHandlar {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ResponseEntity<String> handlerRuntimeException(Exception exception){
+    public ResponseEntity<ErrorMessage> handlerRuntimeException(Exception exception){
         System.out.println("Hata oluştu");
-        return ResponseEntity.ok(exception.getMessage());
+        ErrorType errorType = INTERNAL_ERROR;
+        return new ResponseEntity<>(createErrorMessage(exception,errorType),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(AuthMicroserviceException.class)
