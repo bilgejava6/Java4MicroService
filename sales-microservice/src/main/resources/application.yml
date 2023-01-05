@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/DBauthmicroservice
+    url: jdbc:postgresql://localhost:5432/DBsalesmicroservice
     username: postgres
     password: root
   jpa:

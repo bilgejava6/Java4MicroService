@@ -2,7 +2,7 @@ package com.muhammet.controller;
 
 import com.muhammet.dto.request.BaseRequestDto;
 import com.muhammet.dto.request.CreateProfileRequestDto;
-import com.muhammet.respository.entity.UserProfile;
+import com.muhammet.repository.entity.UserProfile;
 import com.muhammet.service.UserProfileService;
 import com.muhammet.utility.TokenGenerator;
 import lombok.RequiredArgsConstructor;

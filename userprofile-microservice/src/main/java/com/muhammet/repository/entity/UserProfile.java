@@ -1,8 +1,7 @@
-package com.muhammet.respository.entity;
+package com.muhammet.repository.entity;
 
 import com.muhammet.utility.BaseEntity;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;

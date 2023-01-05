@@ -2,8 +2,8 @@ package com.muhammet.service;
 
 import com.muhammet.exception.ErrorType;
 import com.muhammet.exception.UserProfileMicroserviceException;
-import com.muhammet.respository.IUserProfileRepository;
-import com.muhammet.respository.entity.UserProfile;
+import com.muhammet.repository.IUserProfileRepository;
+import com.muhammet.repository.entity.UserProfile;
 import com.muhammet.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 

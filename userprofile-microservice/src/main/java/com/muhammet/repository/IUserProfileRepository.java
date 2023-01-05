@@ -1,6 +1,6 @@
-package com.muhammet.respository;
+package com.muhammet.repository;
 
-import com.muhammet.respository.entity.UserProfile;
+import com.muhammet.repository.entity.UserProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
