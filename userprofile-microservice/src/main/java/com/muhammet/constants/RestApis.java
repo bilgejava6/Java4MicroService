@@ -8,6 +8,7 @@ public class RestApis {
     public static final String USERPROFILE = VERSION+DEV+"/userprofile";
     public static final String CREATEPROFILE = "/createprofile";
 
+    public static final String GETALL = "/getall";
 
 
 }

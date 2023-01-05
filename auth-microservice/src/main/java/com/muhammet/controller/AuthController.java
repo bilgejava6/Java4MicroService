@@ -7,6 +7,7 @@ import com.muhammet.repository.entity.Auth;
 import com.muhammet.repository.entity.State;
 import com.muhammet.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,9 @@ import static com.muhammet.constants.RestApi.*;
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
+
+    @Value("${buuygulama.birdeger}")
+    private String BuradaYMLdanDegerAlalim;
 
     /**
      * Bir end point e istek atarken farklı yollarla parametere gönderilebilir.
@@ -31,14 +35,14 @@ public class AuthController {
      * @return
      */
     @PostMapping(DOLOGIN)
-    public ResponseEntity<Boolean> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
-
-        return ResponseEntity.ok(true);
+    public ResponseEntity<String> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
+        return ResponseEntity.ok(authService.doLogin(dto));
     }
 
     @CrossOrigin("*")
     @PostMapping(REGISTER)
     public ResponseEntity<RegisterResponseDto> register(@RequestBody @Valid RegisterRequestDto dto){
+        System.out.println("gelen değer........: "+ BuradaYMLdanDegerAlalim);
         return ResponseEntity.ok(authService.save(dto));
     }
 }

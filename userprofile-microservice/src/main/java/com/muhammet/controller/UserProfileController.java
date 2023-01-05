@@ -1,8 +1,10 @@
 package com.muhammet.controller;
 
+import com.muhammet.dto.request.BaseRequestDto;
 import com.muhammet.dto.request.CreateProfileRequestDto;
 import com.muhammet.respository.entity.UserProfile;
 import com.muhammet.service.UserProfileService;
+import com.muhammet.utility.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import java.util.List;
+
 import static com.muhammet.constants.RestApis.*;
 @RestController
 @RequestMapping(USERPROFILE)
@@ -19,6 +23,12 @@ import static com.muhammet.constants.RestApis.*;
 public class UserProfileController {
 
     private final UserProfileService userProfileService;
+    private final TokenGenerator tokenGenerator;
+    @PostMapping(GETALL)
+    public ResponseEntity<List<UserProfile>> userProfileList(@RequestBody @Valid BaseRequestDto dto){
+        Long userid = tokenGenerator.decodeToken(dto.getToken());
+        return ResponseEntity.ok(userProfileService.findAll(userid));
+    }
 
     /**
      * DİKKAT!!!!

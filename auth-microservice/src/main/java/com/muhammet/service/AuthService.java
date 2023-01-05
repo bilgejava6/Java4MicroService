@@ -1,6 +1,7 @@
 package com.muhammet.service;
 
 import com.muhammet.dto.request.CreateProfileRequestDto;
+import com.muhammet.dto.request.DoLoginRequestDto;
 import com.muhammet.dto.request.RegisterRequestDto;
 import com.muhammet.dto.response.RegisterResponseDto;
 import com.muhammet.exception.AuthMicroserviceException;
@@ -10,7 +11,10 @@ import com.muhammet.mapper.IAuthMapper;
 import com.muhammet.repository.IAuthRepository;
 import com.muhammet.repository.entity.Auth;
 import com.muhammet.utility.ServiceManager;
+import com.muhammet.utility.TokenGenerator;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AuthService extends ServiceManager<Auth,Long> {
@@ -21,10 +25,13 @@ public class AuthService extends ServiceManager<Auth,Long> {
      * @Autowired ile işaretlemek ya da Constructor Injection ile kullanmak.
      */
     private final IUserProfileManager userProfileManager;
-    public AuthService(IAuthRepository repository, IUserProfileManager userProfileManager){
+    private final TokenGenerator tokenGenerator;
+    public AuthService(IAuthRepository repository, IUserProfileManager userProfileManager,
+                       TokenGenerator tokenGenerator){
         super(repository);
         this.repository=repository;
         this.userProfileManager = userProfileManager;
+        this.tokenGenerator = tokenGenerator;
     }
 
     /**
@@ -69,5 +76,15 @@ public class AuthService extends ServiceManager<Auth,Long> {
         result.setContent(auth.getEmail()+" ile başarı şekilde kayıt oldunuz.");
         return  result;
 
+    }
+
+    public String doLogin(DoLoginRequestDto dto){
+        Optional<Auth> auth = repository.findOptionalByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+        if(auth.isEmpty())
+            throw  new AuthMicroserviceException(ErrorType.LOGIN_ERROR);
+        /**
+         * Login olan kişiler için özel bir token üretmek mantıklıdır.
+         */
+      return tokenGenerator.createToken(auth.get().getId());
     }
 }

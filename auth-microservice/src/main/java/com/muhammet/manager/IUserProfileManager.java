@@ -12,7 +12,7 @@ import javax.validation.Valid;
  * isimlendirme benzersiz uniq olmalıdır.
  */
 @FeignClient(name = "user-profile-manager"
-        ,url = "http://localhost:9093/v1/dev/userprofile"
+        ,url = "${myapplication.user.feignurl}"
         ,decode404 = true)
 public interface IUserProfileManager {
 
