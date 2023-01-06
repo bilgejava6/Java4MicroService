@@ -1,26 +1,8 @@
-# DİKKAT!!!!! Sistem Ortam Deişkenlerine işlenen bilgiler, IDE yeniden başlatılana kadar aktif olmaz.
-server:
-  port: ${AUTH_PORT}
-
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/DBauthmicroservice
-    username: ${AUTH_DB_USERNAME}
-    password: ${AUTH_DB_PASSWORD}
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
-myapplication:
-  auth:
-    ip: localhost
-    port: ${AUTH_PORT}
-  user:
-    ip: localhost
-    port: 9093
-    feignurl: http://localhost:9093/v1/dev/userprofile
-
-buuygulama:
-  birdeger: ${AUTH_BIRDEGER}
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: "configserver:"
+  application:
+    name: auth-service-application

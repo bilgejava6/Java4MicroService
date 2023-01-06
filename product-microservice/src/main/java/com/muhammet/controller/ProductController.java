@@ -9,6 +9,6 @@ import static  com.muhammet.constants.RestApis.*;
 @RestController
 @RequestMapping(PRODUCT)
 @RequiredArgsConstructor
-public class Controller {
+public class ProductController {
     private final ProductService productService;
 }

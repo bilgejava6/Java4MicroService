@@ -32,6 +32,11 @@ ext {
          springBootValidation   : "org.springframework.boot:spring-boot-starter-validation:${versions.springBoot}",
          springBootDevTools     : "org.springframework.boot:spring-boot-devtools:${versions.springBoot}",
          springCloudOpenFeign   : "org.springframework.cloud:spring-cloud-starter-openfeign:${versions.springCloud}",
+         // Spring Cloud Config için gerekli bağmlılıklar. Server - Client için
+         springCloudConfig      : "org.springframework.cloud:spring-cloud-starter-config:${versions.springCloud}",
+         springCloudConfigServer: "org.springframework.cloud:spring-cloud-config-server:${versions.springCloud}",
+         springCloudConfigClient: "org.springframework.cloud:spring-cloud-config-client:${versions.springCloud}",
+
          lombok                 : "org.projectlombok:lombok:${versions.lombok}",
          postgreSQL             : "org.postgresql:postgresql:${versions.postgreSQL}",
          swaggerui              : "org.springdoc:springdoc-openapi-ui:${versions.swagger}",

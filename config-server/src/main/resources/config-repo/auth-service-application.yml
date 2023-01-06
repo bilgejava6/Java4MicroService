@@ -1,12 +1,13 @@
+# DİKKAT!!!!! Sistem Ortam Deişkenlerine işlenen bilgiler, IDE yeniden başlatılana kadar aktif olmaz.
 server:
-  port: 8090
+  port: ${AUTH_PORT}
 
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/DBauthmicroservice
-    username: postgres
-    password: root
+    username: ${AUTH_DB_USERNAME}
+    password: ${AUTH_DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,11 +16,11 @@ spring:
 myapplication:
   auth:
     ip: localhost
-    port: 9090
+    port: ${AUTH_PORT}
   user:
     ip: localhost
     port: 9093
     feignurl: http://localhost:9093/v1/dev/userprofile
 
 buuygulama:
-  birdeger: "YML dan gelen bir parametre"
+  birdeger: ${AUTH_BIRDEGER}

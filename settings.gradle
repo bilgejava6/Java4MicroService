@@ -3,4 +3,5 @@ include 'auth-microservice'
 include 'userprofile-microservice'
 include 'product-microservice'
 include 'sales-microservice'
+include 'config-server'
 
