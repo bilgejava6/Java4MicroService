@@ -4,4 +4,5 @@ include 'userprofile-microservice'
 include 'product-microservice'
 include 'sales-microservice'
 include 'config-server'
+include 'config-server-git'
 

@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server-git
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/bilgejava6/CloudConfigRepoYml.git"
+          default-label: main
+          skip-ssl-validation: true
+          username: bilgejava6
+          password: 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
+
+

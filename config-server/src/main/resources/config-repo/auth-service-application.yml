@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/DBauthmicroservice
-    username: ${AUTH_DB_USERNAME}
-    password: ${AUTH_DB_PASSWORD}
+    url: jdbc:postgresql://192.168.1.26:5432/DBauthmicroservice
+    username: postgres
+    password: root
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,12 +15,12 @@ spring:
 
 myapplication:
   auth:
-    ip: localhost
-    port: ${AUTH_PORT}
+    ip: 192.168.1.26
+    port: 9090
   user:
-    ip: localhost
+    ip: 192.168.1.26
     port: 9093
-    feignurl: http://localhost:9093/v1/dev/userprofile
+    feignurl: http://192.168.1.26:9093/v1/dev/userprofile
 
 buuygulama:
-  birdeger: ${AUTH_BIRDEGER}
+  birdeger: "birdeğer"
