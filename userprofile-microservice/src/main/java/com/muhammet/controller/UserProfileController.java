@@ -7,10 +7,7 @@ import com.muhammet.service.UserProfileService;
 import com.muhammet.utility.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -44,6 +41,11 @@ public class UserProfileController {
                         .build()
         );
         return ResponseEntity.ok(true);
+    }
+
+    @GetMapping(GETALL)
+    public ResponseEntity<List<UserProfile>> userProfileList(){
+        return ResponseEntity.ok(userProfileService.findAll());
     }
 
 }
