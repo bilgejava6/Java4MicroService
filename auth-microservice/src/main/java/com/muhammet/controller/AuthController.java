@@ -45,4 +45,9 @@ public class AuthController {
         System.out.println("gelen değer........: "+ BuradaYMLdanDegerAlalim);
         return ResponseEntity.ok(authService.save(dto));
     }
+
+    @GetMapping("/say")
+    public ResponseEntity<String> sayHello(){
+        return ResponseEntity.ok( "Selam arkadaşlar ben Auth");
+    }
 }
