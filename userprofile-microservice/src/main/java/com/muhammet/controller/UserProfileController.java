@@ -23,8 +23,8 @@ public class UserProfileController {
     private final TokenGenerator tokenGenerator;
     @PostMapping(GETALL)
     public ResponseEntity<List<UserProfile>> userProfileList(@RequestBody @Valid BaseRequestDto dto){
-        Long userid = tokenGenerator.decodeToken(dto.getToken());
-        return ResponseEntity.ok(userProfileService.findAll(userid));
+        Long authid = tokenGenerator.decodeToken(dto.getToken());
+        return ResponseEntity.ok(userProfileService.findAll(authid));
     }
 
     /**
@@ -48,4 +48,14 @@ public class UserProfileController {
         return ResponseEntity.ok(userProfileService.findAll());
     }
 
+    @GetMapping("/getupper")
+    public ResponseEntity<String> getUpperCase(String name){
+        return ResponseEntity.ok(userProfileService.getUpperCase(name));
+    }
+
+    @GetMapping("/clear")
+    public ResponseEntity<Void> clearAll(){
+        userProfileService.clearCache();
+        return ResponseEntity.ok().build();
+    }
 }

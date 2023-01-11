@@ -1,6 +1,11 @@
 server:
   port: 80
 spring:
+  zipkin:
+    enabled: true
+    base-url: http://localhost:9411
+    service:
+      name: api-gateway
   application:
     name: api-gateway-microservice
   main:

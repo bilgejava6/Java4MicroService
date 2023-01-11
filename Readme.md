@@ -73,5 +73,56 @@
     host    replication     all             127.0.0.1/32            scram-sha-256
     host    replication     all             ::1/128                 scram-sha-256
     
+# MongoDB Docker kullanınımı hakkında
 
+### Docker üzerinde çalıştırmak.
+    docker run --name localdockermongo -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root -p 27000:27017 -d mongo:4.2.23
 
+### Docker üzerindeki mongoDB ye bağlanmak.
+    MongoDb Compass kullanarak bağlanabilirsiniz. Yeni bağlantı yaparak,
+    localhost:27000 adresini kullanarak bağlanabilirsiniz.
+    auth kısmında -> username: root, password: root şeklinde bağlanabilirsiniz.
+    databasename boş bırakılacak.
+    DİKKAT!!!
+    MongoDB de bir veritabanına erişim Root kullanıcı ile yapılmaz. default ta 
+    kullanıcı yeni eklenen DB ye yönetici olarak eklenmez. ve root şifresi ile erişim
+    doğru değildir. bu nedenle her DB için yetkili bir kullanıcı oluşturmak gereklidir.
+    Kullanıcı oluşturma işlemi için Mongo Compass kullanılabilir.
+    1- use [DB ADI] - Java4DB
+    2- db.createUser({
+            user: "JavaUser",
+            pwd: "Aa123456",
+            roles: [ "readWrite", "dbAdmin"]
+            })
+    NOT: Böyle yapıştırın: db.createUser({user: "JavaUser",pwd: "Aa123456",roles: [ "readWrite", "dbAdmin"]})
+    3- bu işlemlerden sonra mutlaka yen oluşturdupğunuz kullanıcı ile bağlatıyı deneyin.
+
+# ZİPKİN Server docker üzerinde çalıştırmak ve ayarlamalar 
+
+    docker run -d -p 9411:9411 openzipkin/zipkin
+
+    1- Gerekli bağımlılıklar genel build.gradle a eklenir.
+    2- application.yml içinde zipkin ayarları yapılır.
+      zipkin:
+        enabled: true
+        base-url: http://localhost:9411
+        service:
+          name: config-server
+
+# REDIS server kullanımı 
+
+     docker run --name localredis -d -p 6379:6379 redis
+
+    1- Öncelikle bağımlılıkları ekliyoruz. DİKKAT tüm sisteme değil kullanacak servisltere ekleyin.
+    2- redis için bir config dosyayı yapılandırmalsısınız.
+    3- 
+    @Configuration
+    @EnableCaching // redis üzerinde kullanmak üzere spring cache in aktif edilmesi içni gereklidir.
+    @EnableRedisRepositories
+    public class RedisConfiguration {    
+        @Bean
+        public LettuceConnectionFactory redisLettuceConnectionFactory(){
+            return new LettuceConnectionFactory(new RedisStandaloneConfiguration("localhost",6379));
+        }    
+    }
+    

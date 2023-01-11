@@ -3,6 +3,11 @@ server:
   port: ${AUTH_PORT}
 
 spring:
+  zipkin:
+    enabled: true
+    base-url: http://localhost:9411
+    service:
+      name: sales-service
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/DBauthmicroservice
