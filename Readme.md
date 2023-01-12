@@ -126,3 +126,19 @@
         }    
     }
     
+# ElasticSearch Kurulumu ve Kullanımı
+
+    1- Gerekli bağımlılıklar tanımlanır ve eklenir.
+    2- ElasticSearch için sonraki adım spring.io dökümantasyonu okunmalıdır. çünkü hangi spring boot versiyonunun
+    hangi elasticSearch versiyonu ile uyumlu olduğu bilinmelidir. 
+    3- Elasticsearch kullanımı için ayrı bir modül oluşturmak çok daha mantıklıdır.
+    4- ilgili elasticsearch docker imajı kurulur.
+     *  docker network create somenetwork
+     *  docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms1024m -Xmx2048m" elasticsearch:7.17.7
+    5- ElasticSearch için bir application.yml dosyasına ilgili parametereler yazılır.
+    spring:
+     elasticsearch:
+        uris: http://localhost:9200
+    6- Eğer elasticsearch için data analiz yapcaksanız, verilerinizi kontrol edecek iseniz
+    kibana kurmanız tavsiye edilir.
+     * docker run -d --name kibana --net somenetwork -p 5601:5601 kibana:7.17.7

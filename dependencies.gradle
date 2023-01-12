@@ -30,6 +30,7 @@ ext {
          springBootDataJpa      : "org.springframework.boot:spring-boot-starter-data-jpa:${versions.springBoot}",
          springBootDataMongo    : "org.springframework.boot:spring-boot-starter-data-mongodb:${versions.springBoot}",
          springBootDataRedis    : "org.springframework.boot:spring-boot-starter-data-redis:${versions.springBoot}",
+         springBootDataElasticsearch    : "org.springframework.boot:spring-boot-starter-data-elasticsearch:${versions.springBoot}",
          springBootWeb          : "org.springframework.boot:spring-boot-starter-web:${versions.springBoot}",
          springBootValidation   : "org.springframework.boot:spring-boot-starter-validation:${versions.springBoot}",
          springBootDevTools     : "org.springframework.boot:spring-boot-devtools:${versions.springBoot}",

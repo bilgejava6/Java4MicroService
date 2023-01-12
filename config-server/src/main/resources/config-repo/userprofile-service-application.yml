@@ -14,3 +14,7 @@ spring:
       database: Java4DB
       username: JavaUser
       password: Aa123456
+
+myapplication:
+  feignclient:
+    elasticsearch: http://localhost:9100/userprofile
