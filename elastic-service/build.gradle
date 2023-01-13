@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'com.muhammet'
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation libs.graphiqlSpringStarter
+    implementation libs.graphqlSpringStarter
+    implementation libs.graphqlJavaTools
+    implementation libs.springBootDataElasticsearch
+}

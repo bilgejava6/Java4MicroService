@@ -142,3 +142,8 @@
     6- Eğer elasticsearch için data analiz yapcaksanız, verilerinizi kontrol edecek iseniz
     kibana kurmanız tavsiye edilir.
      * docker run -d --name kibana --net somenetwork -p 5601:5601 kibana:7.17.7
+
+# GraphQL KUllanımı
+
+    graphqls dosyası içinde tanımlanan datatype larda ! işareti zorunlu tanımlı
+    alanları belirtir (null olamaz). ! işareti olmayan alanlar null olabilir.

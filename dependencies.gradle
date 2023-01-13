@@ -54,5 +54,12 @@ ext {
          mapstruct              : "org.mapstruct:mapstruct:${versions.mapstruct}",
          mapstructProcessor     : "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
 
+         // ghraphQL
+         graphiqlSpringStarter   : "com.graphql-java-kickstart:graphiql-spring-boot-starter:11.1.0",
+         graphqlSpringStarter    : "com.graphql-java-kickstart:graphql-spring-boot-starter:13.0.0",
+         graphqlJavaTools        : "com.graphql-java-kickstart:graphql-java-tools:13.0.0",
+
+
+
     ]
 }

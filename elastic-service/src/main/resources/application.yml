@@ -10,3 +10,14 @@ spring:
   elasticsearch:
     uris: http://localhost:9200
 
+logging:
+  level:
+    org.springframework: DEBUG
+    com.muhammet.graphql: INFO
+    root: trace
+  file:
+    name: elastic-service.log
+  logback:
+    rollingpolicy:
+      max-file-size: 20MB
+
