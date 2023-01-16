@@ -62,6 +62,8 @@ ext {
         // jwt
          jwt                     : "com.auth0:java-jwt:4.2.2",
 
+        // Spring AMQP ile RabbitMQ Kullanımı
+        springBootStarterAmqp   : "org.springframework.boot:spring-boot-starter-amqp:${versions.springBoot}",
 
     ]
 }

@@ -156,3 +156,10 @@
     ve hesabınızı açacaktır. Ardından docker.hub a göndermek istediğiniz image ın  sağtarafında bulunan 
     3 noktaya basarak "push" butonuna basmanız yeterlidir. Bu işlem image boyutuna göre uzun sürebilir.
     sonraki yüklemeleriniz, daha kısa sürecektir.
+
+
+# RabbitMQ Docker kurulumu
+
+    docker run -d --name some-rabbit -e RABBITMQ_DEFAULT_USER=java4 -e RABBITMQ_DEFAULT_PASS=root -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+    1- RabbitMQ arayüzüne erişim için http://localhost:15672/ adresine gidilir.
+    2- Java içinden api desteği ve erişim için post olarak 5672 kullanılır.
