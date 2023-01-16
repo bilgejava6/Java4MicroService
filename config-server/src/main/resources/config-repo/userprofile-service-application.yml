@@ -9,8 +9,8 @@ spring:
       name: userprofile-service
   data:
     mongodb:
-      host: localhost
-      port: 27000
+      host: 34.65.205.92
+      port: 27777
       database: Java4DB
       username: JavaUser
       password: Aa123456

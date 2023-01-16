@@ -147,3 +147,12 @@
 
     graphqls dosyası içinde tanımlanan datatype larda ! işareti zorunlu tanımlı
     alanları belirtir (null olamaz). ! işareti olmayan alanlar null olabilir.
+
+
+# Docker Image larının Upload Edilmesi
+
+    Docker Desktop üzerinde oluşturulan imajlarınızı, Docker Hub a push etmek için öncelikle hub hesabınızı
+    web üzerinden açınız, sonra dcker desktop üzerinden login olmayı denediğinizde otomatik sizi yönlendirecek
+    ve hesabınızı açacaktır. Ardından docker.hub a göndermek istediğiniz image ın  sağtarafında bulunan 
+    3 noktaya basarak "push" butonuna basmanız yeterlidir. Bu işlem image boyutuna göre uzun sürebilir.
+    sonraki yüklemeleriniz, daha kısa sürecektir.

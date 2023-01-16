@@ -59,6 +59,8 @@ ext {
          graphqlSpringStarter    : "com.graphql-java-kickstart:graphql-spring-boot-starter:13.0.0",
          graphqlJavaTools        : "com.graphql-java-kickstart:graphql-java-tools:13.0.0",
 
+        // jwt
+         jwt                     : "com.auth0:java-jwt:4.2.2",
 
 
     ]

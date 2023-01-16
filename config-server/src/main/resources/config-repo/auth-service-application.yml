@@ -10,9 +10,9 @@ spring:
       name: auth-service
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.1.26:5432/DBauthmicroservice
+    url: jdbc:postgresql://34.65.4.162:11222/DBauthmicroservice
     username: postgres
-    password: root
+    password: 123456
   jpa:
     hibernate:
       ddl-auto: update
