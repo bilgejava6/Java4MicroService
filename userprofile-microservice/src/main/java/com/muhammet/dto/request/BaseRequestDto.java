@@ -14,6 +14,6 @@ import javax.validation.constraints.Size;
 @Builder
 public class BaseRequestDto {
     @NotBlank
-    @Size(min = 5,max = 35)
+    @Size(min = 35)
     String token;
 }

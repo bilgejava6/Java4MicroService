@@ -23,8 +23,7 @@ public class UserProfileController {
     private final TokenGenerator tokenGenerator;
     @PostMapping(GETALL)
     public ResponseEntity<List<UserProfile>> userProfileList(@RequestBody @Valid BaseRequestDto dto){
-        Long authid = tokenGenerator.decodeToken(dto.getToken());
-        return ResponseEntity.ok(userProfileService.findAll(authid));
+        return ResponseEntity.ok(userProfileService.findAll(dto));
     }
 
     /**
