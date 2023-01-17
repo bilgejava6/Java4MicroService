@@ -3,6 +3,10 @@ server:
   port: ${AUTH_PORT}
 
 spring:
+  security:
+    user:
+      name: java4
+      password: root
   rabbitmq:
     host: localhost
     port: 5672

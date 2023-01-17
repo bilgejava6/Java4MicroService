@@ -8,6 +8,8 @@ import com.muhammet.exception.AuthMicroserviceException;
 import com.muhammet.exception.ErrorType;
 import com.muhammet.manager.IUserProfileManager;
 import com.muhammet.mapper.IAuthMapper;
+import com.muhammet.rabbitmq.model.CreateUser;
+import com.muhammet.rabbitmq.producer.CreateUserProducer;
 import com.muhammet.repository.IAuthRepository;
 import com.muhammet.repository.entity.Auth;
 import com.muhammet.utility.JwtTokenManager;
@@ -27,12 +29,14 @@ public class AuthService extends ServiceManager<Auth,Long> {
      */
     private final IUserProfileManager userProfileManager;
     private final JwtTokenManager jwtTokenManager;
+    private final CreateUserProducer createUserProducer;
     public AuthService(IAuthRepository repository, IUserProfileManager userProfileManager,
-                       JwtTokenManager jwtTokenManager){
+                       JwtTokenManager jwtTokenManager, CreateUserProducer createUserProducer){
         super(repository);
         this.repository=repository;
         this.userProfileManager = userProfileManager;
         this.jwtTokenManager = jwtTokenManager;
+        this.createUserProducer = createUserProducer;
     }
 
     /**
@@ -66,12 +70,17 @@ public class AuthService extends ServiceManager<Auth,Long> {
             throw new AuthMicroserviceException(ErrorType.REGISTER_KULLANICIADI_KAYITLI);
 
         Auth auth = save(IAuthMapper.INSTANCE.fromRegisterRequestDto(dto));
-        userProfileManager.createProfile(CreateProfileRequestDto.builder()
-                        .token("")
+        createUserProducer.converdAndSendMessageCreateUser(CreateUser.builder()
                         .authid(auth.getId())
                         .username(auth.getUsername())
                         .email(auth.getEmail())
                 .build());
+//        userProfileManager.createProfile(CreateProfileRequestDto.builder()
+//                        .token("")
+//                        .authid(auth.getId())
+//                        .username(auth.getUsername())
+//                        .email(auth.getEmail())
+//                .build());
         RegisterResponseDto result = IAuthMapper.INSTANCE.fromAuth(auth);
         result.setRegisterstate(100);
         result.setContent(auth.getEmail()+" ile başarı şekilde kayıt oldunuz.");
