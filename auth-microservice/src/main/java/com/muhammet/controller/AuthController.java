@@ -42,7 +42,6 @@ public class AuthController {
     @CrossOrigin("*")
     @PostMapping(REGISTER)
     public ResponseEntity<RegisterResponseDto> register(@RequestBody @Valid RegisterRequestDto dto){
-        System.out.println("gelen değer........: "+ BuradaYMLdanDegerAlalim);
         return ResponseEntity.ok(authService.save(dto));
     }
 

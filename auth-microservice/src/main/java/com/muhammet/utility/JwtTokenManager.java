@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class JwtTokenManager {
 
-    private final String sifreAnahtari = "1234";
+    private final String sifreAnahtari = "etbpcQpLkNsUmYCYKwDmp2iwQVxbYAbUKUuK3Tdv7C4KNQtuL9";
     //@Value("${SECRETKEY}")
     //String secretKey;
     /**
