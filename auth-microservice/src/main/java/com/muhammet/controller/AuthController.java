@@ -9,6 +9,7 @@ import com.muhammet.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -46,7 +47,15 @@ public class AuthController {
     }
 
     @GetMapping("/say")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMINISTRATOR')")
     public ResponseEntity<String> sayHello(){
         return ResponseEntity.ok( "Selam arkadaşlar ben Auth");
     }
+
+    @GetMapping("/sayadmin")
+    @PreAuthorize("hasAuthority('ADMINISTRATOR')")
+    public ResponseEntity<String> sayHelloAdmin(){
+        return ResponseEntity.ok( "Selam arkadaşlar ben Admin Auth");
+    }
+
 }
