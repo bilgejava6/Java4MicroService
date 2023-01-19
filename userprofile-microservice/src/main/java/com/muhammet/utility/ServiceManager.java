@@ -1,6 +1,9 @@
 package com.muhammet.utility;
 
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
@@ -69,6 +72,9 @@ public class ServiceManager<T extends BaseEntity, ID> implements IService<T,ID> 
         return repository.findAll();
     }
 
+    public Page<T> findAll(Pageable pageable){
+        return repository.findAll(pageable);
+    }
     @Override
     public Optional<T> findById(ID id) {
         return repository.findById(id);

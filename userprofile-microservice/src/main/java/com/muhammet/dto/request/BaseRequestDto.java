@@ -16,4 +16,20 @@ public class BaseRequestDto {
     @NotBlank
     @Size(min = 35)
     String token;
+    /**
+     * Geçerli Sayfa numarası
+     */
+    Integer currentPage;
+    /**
+     * Bir sayfada gösterilecek kayıt sayısı
+     */
+    Integer pageSize;
+    /**
+     * Sıralama yapılacak sutunadı
+     */
+    String sortParameter;
+    /**
+     * sıralamanın yönü, ASC,DESC
+     */
+    String direction;
 }

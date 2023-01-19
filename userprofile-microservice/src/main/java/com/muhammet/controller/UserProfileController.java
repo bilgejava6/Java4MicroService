@@ -6,6 +6,7 @@ import com.muhammet.repository.entity.UserProfile;
 import com.muhammet.service.UserProfileService;
 import com.muhammet.utility.TokenGenerator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,8 @@ public class UserProfileController {
     private final UserProfileService userProfileService;
     private final TokenGenerator tokenGenerator;
     @PostMapping(GETALL)
-    public ResponseEntity<List<UserProfile>> userProfileList(@RequestBody @Valid BaseRequestDto dto){
+    @CrossOrigin("*")
+    public ResponseEntity<Page<UserProfile>> userProfileList(@RequestBody @Valid BaseRequestDto dto){
         return ResponseEntity.ok(userProfileService.findAll(dto));
     }
 
@@ -31,6 +33,7 @@ public class UserProfileController {
      * mutlaka, @RequestBody ve @Valid eklentilerini yapınız.
      */
     @PostMapping(CREATEPROFILE)
+    @CrossOrigin("*")
     public ResponseEntity<Boolean> createProfile(@RequestBody @Valid CreateProfileRequestDto dto){
         userProfileService.save(
                 UserProfile.builder()
@@ -43,6 +46,7 @@ public class UserProfileController {
     }
 
     @GetMapping(GETALL)
+    @CrossOrigin("*")
     public ResponseEntity<List<UserProfile>> userProfileList(){
         return ResponseEntity.ok(userProfileService.findAll());
     }

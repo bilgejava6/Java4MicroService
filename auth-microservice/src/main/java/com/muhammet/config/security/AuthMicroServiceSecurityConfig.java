@@ -33,7 +33,7 @@ public class AuthMicroServiceSecurityConfig {
         httpSecurity.authorizeRequests()
                 .antMatchers("/v3/api-docs/**",
                         "/swagger-ui/**","/v1/dev/auth/dologin",
-                        "/role/saverole").permitAll()
+                        "/role/saverole","/v1/dev/auth/register").permitAll()
                         .anyRequest().authenticated();
 
         /**
