@@ -2,6 +2,7 @@ package com.muhammet.controller;
 
 import com.muhammet.dto.request.DoLoginRequestDto;
 import com.muhammet.dto.request.RegisterRequestDto;
+import com.muhammet.dto.response.DoLoginResponseDto;
 import com.muhammet.dto.response.RegisterResponseDto;
 import com.muhammet.repository.entity.Auth;
 import com.muhammet.repository.entity.State;
@@ -36,8 +37,12 @@ public class AuthController {
      * @return
      */
     @PostMapping(DOLOGIN)
-    public ResponseEntity<String> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
-        return ResponseEntity.ok(authService.doLogin(dto));
+    @CrossOrigin("*")
+    public ResponseEntity<DoLoginResponseDto> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
+        return ResponseEntity.ok(
+                DoLoginResponseDto.builder()
+                        .token(authService.doLogin(dto))
+                        .build());
     }
 
     @CrossOrigin("*")
