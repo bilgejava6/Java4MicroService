@@ -27,3 +27,4 @@ spec:
         env:
           - name: POSTGRES_PASSWORD
             value: "123456"
+
