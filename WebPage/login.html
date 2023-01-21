@@ -36,10 +36,11 @@
         function login() {
             var username = document.getElementById("txtusername").value;
             var password = document.getElementById("txtpassword").value;
-            fetch('http://localhost:9090/v1/dev/auth/dologin',{
+            fetch('http://34.65.205.92/auth/dologin',{
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     'username': username,

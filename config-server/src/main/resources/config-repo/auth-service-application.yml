@@ -1,6 +1,6 @@
 # DİKKAT!!!!! Sistem Ortam Deişkenlerine işlenen bilgiler, IDE yeniden başlatılana kadar aktif olmaz.
 server:
-  port: ${AUTH_PORT}
+  port: 9090
 
 spring:
   security:
